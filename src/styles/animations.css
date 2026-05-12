@@ -1,0 +1,16 @@
+
+/* login caret animation */
+@keyframes blinkCursor {
+
+    0% {
+        border-right-color: var(--text-primary);
+    }
+
+    50% {
+        border-right-color: transparent;
+    }
+
+    100% {
+        border-right-color: var(--text-primary);
+    }
+}

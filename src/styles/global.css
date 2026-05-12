@@ -1,0 +1,431 @@
+@import "./variables.css";
+@import "./base.css";
+@import "./animations.css";
+
+/* =========================================================
+   HOME
+========================================================= */
+
+/* ── Container ─────────────────────────────────────────── */
+.home-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+    width: 100vw;
+    min-height: 100vh;
+
+    padding: 3rem;
+
+    overflow: hidden;
+}
+
+/* ── Card ───────────────────────────────────────────────── */
+
+.home_af-card {
+    position: relative;
+    z-index: 2;
+
+    width: min(100%, 520px);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 1.25rem;
+
+    padding: 3rem 2.5rem;
+
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 28px;
+
+    background: rgba(255, 255, 255, 0.02);
+
+    backdrop-filter: blur(10px);
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+/* ── Brand ──────────────────────────────────────────────── */
+
+.home_af-logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.home_af-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+
+    border-radius: 12px;
+
+    background: linear-gradient(135deg, #7c6fff, #5d4fff);
+
+    box-shadow: 0 10px 25px rgba(124, 111, 255, 0.35);
+}
+
+.home_af-name {
+    color: #f5f5f7;
+
+    font-family: var(--font-sans);
+    font-size: 1.7rem;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+}
+
+/* ── Content ────────────────────────────────────────────── */
+
+.home-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.home-title {
+    max-width: 400px;
+
+    color: var(--text-primary);
+
+    text-align: center;
+
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.06em;
+}
+
+/* ── Technologies ───────────────────────────────────────── */
+
+.home-technologies {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.home-technologies__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 5px;
+    width: 45px;
+    height: 45px;
+
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 8px;
+
+    background: rgba(255, 255, 255, 0.03);
+
+    fill: var(--text-primary);
+}
+
+/* ── Buttons ────────────────────────────────────────────── */
+
+.home_af-btns {
+    display: flex;
+    gap: 12px;
+
+    margin-top: 0.5rem;
+}
+
+.home_btn {
+    height: 44px;
+
+    padding: 0 20px;
+
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius-md);
+
+    background: transparent;
+
+    color: var(--text-primary);
+
+    font-size: 0.95rem;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.15s ease;
+}
+
+.home_btn:hover {
+    border-color: var(--border-hover);
+    background: var(--surface-2);
+    transform: translateY(-1px);
+}
+
+.home_btn:active {
+    transform: scale(0.97);
+}
+
+/* Primary variant */
+.home_btn--create-account {
+    border-color: var(--accent);
+    background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+    color: white;
+}
+
+.home_btn--create-account:hover {
+    filter: brightness(1.08);
+    border-color: var(--accent-hover);
+    background: linear-gradient(135deg, var(--accent-hover), var(--accent-hover));
+}
+
+/* ── Footer ─────────────────────────────────────────────── */
+
+.home-footer {
+    margin-top: 0.5rem;
+}
+
+.home_af-tagline {
+    max-width: 420px;
+
+    color: var(--text-muted);
+
+    text-align: center;
+
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+.login-layout {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 2.3fr 1fr;
+}
+
+.login_brand-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 3rem;
+    border-right: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+}
+
+.login_brand-logo {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    text-decoration: none;
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.login_brand-logo:hover {
+    color: var(--accent);
+}
+
+
+.login_brand-icon {
+    width: 32px;
+    height: 32px;
+    background: var(--accent);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login_brand-icon svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: white;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.login_brand-hero {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-hero_container-text {
+    font-size: 25px;
+    width: max-content;
+    text-align: end;
+    display: flex;
+    align-items: end;
+    height: 45px;
+    border-right: 4px solid var(--text-primary);
+    animation: blinkCursor 1s infinite;
+}
+
+.login_brand-hero h1 {
+    position: relative;
+    width: max-content;
+    top: 22px;
+}
+
+.login_brand-hero h2 {
+    font-size: 22px;
+    color: var(--text-secondary);
+    margin-top: 0.5rem;
+}
+
+.login_brand-hero span {
+    color: var(--accent);
+}
+
+.login_brand-features {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.login_feature-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.login_feature-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+}
+
+
+.login_auth-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+}
+
+.login_auth-container {
+    width: 100%;
+    max-width: 380px;
+}
+
+
+.login_auth-header {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.login_auth-header h2 {
+    font-size: 35px;
+}
+
+
+.login_form-group_bottom {
+    margin-bottom: 1rem;
+}
+
+
+.login_auth_form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+
+
+.login_auth_btn-primary {
+    width: 100%;
+    padding: 13px 20px;
+    background: var(--accent);
+    color: white;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.01em;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s, opacity 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+.login_auth_divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 1.5rem 0;
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+.login_auth_divider::before,
+.login_auth_divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+}
+
+
+.login_auth_btn-oauth {
+    width: 100%;
+    padding: 11px 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text-secondary);
+    font-family: var(--font-body);
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: border-color 0.2s, background 0.2s, color 0.2s;
+}
+
+.login_auth_btn-oauth:hover {
+    border-color: var(--border-hover);
+    background: var(--surface-2);
+    color: var(--text-primary);
+}
+
+.login_auth_btn-oauth svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+
+.login_auth_auth-footer {
+    text-align: center;
+    margin-top: 1.75rem;
+    font-size: 13px;
+    color: var(--text-muted);
+}
