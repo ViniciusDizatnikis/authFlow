@@ -1,0 +1,214 @@
+/* =========================================================
+   HOME
+========================================================= */
+
+/* ── Container ─────────────────────────────────────────── */
+.home-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+    width: 100vw;
+    min-height: 100vh;
+
+    padding: 3rem;
+
+    overflow: hidden;
+}
+
+/* ── Card ───────────────────────────────────────────────── */
+
+.home_af-card {
+    position: relative;
+    z-index: 2;
+
+    width: min(100%, 520px);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 1.25rem;
+
+    padding: 3rem 2.5rem;
+
+    border: 1px solid var(--surface-2);
+    border-radius: 28px;
+
+    background: var(--surface);
+
+    backdrop-filter: blur(10px);
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+/* ── Brand ──────────────────────────────────────────────── */
+
+.home_af-logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.home_af-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+
+    border-radius: 12px;
+
+    background: linear-gradient(135deg, #7c6fff, #5d4fff);
+
+    box-shadow: 0 10px 25px rgba(124, 111, 255, 0.35);
+}
+
+.home_af-name {
+    color: #f5f5f7;
+
+    font-family: var(--font-sans);
+    font-size: 1.7rem;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+}
+
+/* ── Content ────────────────────────────────────────────── */
+
+.home-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.home-title {
+    max-width: 400px;
+
+    color: var(--text-primary);
+
+    text-align: center;
+
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.06em;
+}
+
+/* ── Technologies ───────────────────────────────────────── */
+
+.home-technologies {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.home-technologies__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 5px;
+    width: 45px;
+    height: 45px;
+
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 8px;
+
+    background: rgba(255, 255, 255, 0.03);
+
+    fill: var(--text-primary);
+}
+
+/* ── Buttons ────────────────────────────────────────────── */
+
+.home_af-btns {
+    display: flex;
+    gap: 12px;
+
+    margin-top: 0.5rem;
+}
+
+.home_btn {
+    height: 44px;
+
+    padding: 0 20px;
+
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius-md);
+
+    background: transparent;
+
+    color: var(--text-primary);
+
+    font-size: 0.95rem;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.15s ease;
+}
+
+.home_btn:hover {
+    border-color: var(--border-hover);
+    background: var(--surface-2);
+    transform: translateY(-1px);
+}
+
+.home_btn:active {
+    transform: scale(0.97);
+}
+
+/* Primary variant */
+.home_btn--create-account {
+    border-color: var(--accent);
+    background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+    color: white;
+}
+
+.home_btn--create-account:hover {
+    filter: brightness(1.08);
+    border-color: var(--accent-hover);
+    background: linear-gradient(135deg, var(--accent-hover), var(--accent-hover));
+}
+
+/* ── Footer ─────────────────────────────────────────────── */
+
+.home-footer {
+    margin-top: 0.5rem;
+}
+
+.home_af-tagline {
+    max-width: 420px;
+
+    color: var(--text-muted);
+
+    text-align: center;
+
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+    .home-container {
+        padding: unset;
+        width: 100%;
+        height: 100dvh;
+    }
+
+    .home_af-card {
+        height: 100dvh;
+        justify-content: center;
+        min-height: 410px;
+        width: 100vw;
+        border: unset;
+        border-radius: unset;
+    }
+}
+

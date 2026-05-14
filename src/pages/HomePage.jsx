@@ -99,6 +99,7 @@ const Home = () => {
                     <button
                         type="button"
                         className="home_btn home_btn--create-account"
+                        onClick={() => navigate("/auth/register")}
                     >
                         Criar conta
                     </button>

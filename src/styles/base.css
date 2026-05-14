@@ -1,3 +1,4 @@
+/* RESET */
 *,
 *::before,
 *::after {
@@ -6,18 +7,37 @@
     padding: 0;
 }
 
-
-/* ROOT */
-
+/* Base */
 #root {
     height: 100dvh;
+}
+
+
+/* Animações */
+.fade-in-left {
+    animation:
+        fadeInLeft 0.4s ease forwards;
+}
+
+.fade-out-left {
+    animation:
+        fadeOutLeft 0.4s ease forwards;
+}
+
+.fade-in-right {
+    animation:
+        fadeInRight 0.4s ease forwards;
+}
+
+.fade-out-right {
+    animation:
+        fadeOutRight 0.4s ease forwards;
 }
 
 
 
 
 /* GLOBAL */
-
 html,
 body {
     width: 100%;
@@ -58,6 +78,7 @@ body {
 }
 
 
+/* Textos Links */
 .link-btn {
     background: none;
     border: none;
@@ -75,7 +96,7 @@ body {
 
 
 
-
+/* input Form */
 .form-group label {
     display: block;
     font-size: 12px;
@@ -101,6 +122,9 @@ body {
 }
 
 
+
+
+/* Erro Form */
 .form-group_error {
     font-size: 12px;
     color: var(--danger);
@@ -109,14 +133,9 @@ body {
 }
 
 
-.form-group_error.visible {
-    display: block;
-}
 
 
-
-
-
+/* Checkbox Form */
 .form-group_checkbox {
     display: flex;
     align-items: center;
@@ -165,4 +184,53 @@ body {
     border: solid white;
     border-width: 0 2px 2px 0;
     transform: rotate(45deg);
+}
+
+/* Erro no form */
+.form-group.error input {
+    border-color: var(--danger);
+}
+
+.form-group.error .form-group_error {
+    display: block;
+}
+
+.form-group.success input {
+    border-color: var(--success);
+}
+
+
+
+
+
+/* botão google */
+
+.btn-google {
+    width: 100%;
+    padding: 11px;
+    background: transparent;
+    border: 0.5px solid #252528;
+    border-radius: 8px;
+    color: #555;
+    font-size: 13px;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: border-color 0.2s, background 0.2s;
+    margin-top: 10px;
+}
+
+.btn-google svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+.btn-google:hover {
+    border-color: var(--border-hover);
+    background: var(--surface-2);
+    color: var(--text-primary);
 }

@@ -1,18 +1,31 @@
 :root {
+
     --bg: #0a0a0b;
+
     --surface: #111114;
     --surface-2: #18181c;
+
     --border: rgba(255, 255, 255, 0.07);
     --border-hover: rgba(255, 255, 255, 0.14);
+
     --text-primary: #f0f0f2;
     --text-secondary: #8a8a96;
     --text-muted: #4a4a56;
+
     --accent: #7c6fff;
     --accent-dim: rgba(124, 111, 255, 0.12);
     --accent-hover: #9d8fff;
+
     --danger: #ff6b6b;
     --success: #4fd17a;
+
+  
+    --progress-bg: rgba(255, 255, 255, 0.08);
+    --progress-active: #9E94F5;
+    --progress-done: var(--accent);
+
     --font-display: 'Syne', sans-serif;
     --font-body: 'DM Sans', sans-serif;
+
     --border-radius-md: 8px;
 }

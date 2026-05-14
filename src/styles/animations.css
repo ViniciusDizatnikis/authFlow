@@ -1,4 +1,3 @@
-
 /* login caret animation */
 @keyframes blinkCursor {
 
@@ -12,5 +11,82 @@
 
     100% {
         border-right-color: var(--text-primary);
+    }
+}
+
+
+
+/* FADE IN LEFT */
+@keyframes fadeInLeft {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateX(0);
+    }
+}
+
+
+/* FADE OUT LEFT */
+@keyframes fadeOutLeft {
+
+    from {
+        opacity: 1;
+
+        transform:
+            translateX(0);
+    }
+
+    to {
+        opacity: 0;
+
+        transform:
+            translateX(-30px);
+    }
+}
+
+
+/* FADE IN RIGHT */
+@keyframes fadeInRight {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateX(30px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateX(0);
+    }
+}
+
+
+/* FADE OUT RIGHT */
+@keyframes fadeOutRight {
+
+    from {
+        opacity: 1;
+
+        transform:
+            translateX(0);
+    }
+
+    to {
+        opacity: 0;
+
+        transform:
+            translateX(30px);
     }
 }
