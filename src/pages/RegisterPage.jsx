@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 import { useNavigate } from 'react-router-dom'
 
@@ -7,6 +7,7 @@ import { isValidEmail } from '../utils/validations';
 
 
 const ANIMATION_TIME = 400;
+const CODE_LENGTH = 6;
 
 
 const RegisterPage = () => {
@@ -41,6 +42,72 @@ const RegisterPage = () => {
 
         }, ANIMATION_TIME);
     }
+
+    const [code, setCode] = useState(Array(CODE_LENGTH).fill(''));
+    const inputsRef = useRef([]);
+
+    function handleCodeChange(value, index) {
+
+        const newCode = [...code];
+        newCode[index] = value;
+
+        setCode(newCode);
+
+        // vai pro próximo input automaticamente
+        if (value && index < CODE_LENGTH - 1) {
+            inputsRef.current[index + 1]?.focus();
+        }
+    }
+
+    function handleKeyDown(e, index) {
+        if (
+            e.key === 'Backspace' &&
+            !code[index] &&
+            index > 0
+        ) {
+            inputsRef.current[index - 1]?.focus();
+        }
+    }
+
+    function handlePaste(e) {
+
+        const paste = e.clipboardData
+            .getData('text')
+            .replace(/\D/g, '')
+            .slice(0, CODE_LENGTH);
+
+        if (!paste) return;
+
+        const newCode = paste.split('');
+
+        while (newCode.length < CODE_LENGTH) {
+            newCode.push('');
+        }
+
+        setCode(newCode);
+
+        const nextIndex = Math.min(paste.length, CODE_LENGTH - 1);
+
+        inputsRef.current[nextIndex]?.focus();
+
+        e.preventDefault();
+    }
+
+
+    function handleVerifyCode() {
+
+        const finalCode = code.join('');
+
+        if (finalCode.length < 6) {
+            alert('Digite o código completo');
+            return;
+        }
+
+        console.log(finalCode);
+
+    }
+
+
 
 
     const [email, setEmail] = useState('');
@@ -148,8 +215,46 @@ const RegisterPage = () => {
                     <div className={`register-step ${animation}`}>
 
                         <h2>Confirme seu e-mail</h2>
-                        <p>Enviamos um e-mail para <b>{email}</b></p>
-                        
+                        <div className='register-card-sub'>
+                            <p>Enviamos um e-mail para
+                                <br />
+                                <b className='email-highlight'>{email}</b></p>
+                        </div>
+
+                        <div className='register-card-code-row'>
+                            {code.map((digit, index) => (
+                                <input
+                                    key={index}
+                                    type="text"
+                                    maxLength={1}
+                                    value={digit}
+
+                                    ref={(el) => inputsRef.current[index] = el}
+
+                                    onChange={(e) =>
+                                        handleCodeChange(
+                                            e.target.value,
+                                            index
+                                        )
+                                    }
+
+                                    onKeyDown={(e) =>
+                                        handleKeyDown(e, index)
+                                    }
+
+                                    onPaste={handlePaste}
+                                />
+                            ))}
+                        </div>
+
+                        <div className='register-card-resend'>
+                            Não recebeu? <button className='link-btn'>Reenviar Código</button>
+                        </div>
+
+                        <button className='register-card-btn' onClick={handleVerifyCode}>Verificar </button>
+
+                        <button className='link-btn register-card-not-email' onClick={prevStep}>Não é este email</button>
+
                     </div>
                 )}
 

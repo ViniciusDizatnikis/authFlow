@@ -95,6 +95,10 @@ body {
 }
 
 
+/* Email Destaque */
+.email-highlight {
+    color: var(--accent);
+}
 
 /* input Form */
 .form-group label {

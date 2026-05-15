@@ -120,3 +120,42 @@
     gap: 4px;
     color: var(--text-muted);
 }
+
+.register-card-sub {
+    margin-bottom: 12px;
+}
+
+.register-card-code-row {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin: 4px 0 6px;
+}
+
+.register-card-code-row input {
+    width: 48px;
+    height: 54px;
+    background: var(--surface-2);
+    border: 0.5px solid var(--border);
+    border-radius: 8px;
+    font-size: 25px;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: border-color 0.2s;
+    caret-color: var(--accent);
+}
+
+.register-card-resend {
+    font-size: 12px;
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.register-card-not-email {
+    margin-top: 20px;
+}
