@@ -1,266 +1,64 @@
-import React, { useRef, useState } from 'react';
+import { useState } from 'react';
+import { useStepAnimation } from '../hooks/useStepAnimation';
+import { StepEmail } from '../components/register/StepEmail';
+import { StepVerifyCode } from '../components/register/StepVerifyCode';
+import { StepFinalizeAccount } from '../components/register/StepFinalizeAccount';
 
-import { useNavigate } from 'react-router-dom'
-
-import { isValidEmail } from '../utils/validations';
-
-
-
-const ANIMATION_TIME = 400;
-const CODE_LENGTH = 6;
-
+const TOTAL_STEPS = 4;
 
 const RegisterPage = () => {
-    const navigate = useNavigate();
-
-    const [step, setStep] = useState(0);
-    const [animation, setAnimation] = useState('');
-
-
-    function nextStep() {
-
-        setAnimation('fade-out-left');
-
-        setTimeout(() => {
-
-            setStep(prev => prev + 1);
-
-            setAnimation('fade-in-right');
-
-        }, ANIMATION_TIME);
-    }
-
-    function prevStep() {
-
-        setAnimation('fade-out-right');
-
-        setTimeout(() => {
-
-            setStep(prev => prev - 1);
-
-            setAnimation('fade-in-left');
-
-        }, ANIMATION_TIME);
-    }
-
-    const [code, setCode] = useState(Array(CODE_LENGTH).fill(''));
-    const inputsRef = useRef([]);
-
-    function handleCodeChange(value, index) {
-
-        const newCode = [...code];
-        newCode[index] = value;
-
-        setCode(newCode);
-
-        // vai pro próximo input automaticamente
-        if (value && index < CODE_LENGTH - 1) {
-            inputsRef.current[index + 1]?.focus();
-        }
-    }
-
-    function handleKeyDown(e, index) {
-        if (
-            e.key === 'Backspace' &&
-            !code[index] &&
-            index > 0
-        ) {
-            inputsRef.current[index - 1]?.focus();
-        }
-    }
-
-    function handlePaste(e) {
-
-        const paste = e.clipboardData
-            .getData('text')
-            .replace(/\D/g, '')
-            .slice(0, CODE_LENGTH);
-
-        if (!paste) return;
-
-        const newCode = paste.split('');
-
-        while (newCode.length < CODE_LENGTH) {
-            newCode.push('');
-        }
-
-        setCode(newCode);
-
-        const nextIndex = Math.min(paste.length, CODE_LENGTH - 1);
-
-        inputsRef.current[nextIndex]?.focus();
-
-        e.preventDefault();
-    }
-
-
-    function handleVerifyCode() {
-
-        const finalCode = code.join('');
-
-        if (finalCode.length < 6) {
-            alert('Digite o código completo');
-            return;
-        }
-
-        console.log(finalCode);
-
-    }
-
-
-
-
+    const { step, animation, nextStep, prevStep } = useStepAnimation();
     const [email, setEmail] = useState('');
-    const [emailError, setEmailError] = useState('');
 
-    function handleEmailChange(e) {
-
-        const value = e.target.value;
-        setEmail(value);
-
-        if (!value.trim()) {
-            setEmailError('');
-            return;
-        }
-
-        if (!isValidEmail(value)) {
-            setEmailError('Insira um e-mail válido.');
-            return;
-        }
-
-        setEmailError('');
-    }
-
-    function handleContinue() {
-
-        if (step === 0) {
-
-            if (!email.trim()) {
-                setEmailError('Digite seu e-mail.');
-                return;
-            }
-
-            if (!isValidEmail(email)) {
-                setEmailError('Insira um e-mail válido.');
-                return;
-            }
-        }
-
+    function handleEmailContinue(validEmail) {
+        setEmail(validEmail);
         nextStep();
     }
 
+    function handleVerifyCode(code) {
+        console.log('Código verificado:', code);
+        nextStep();
+    }
 
+    return (
+        <div className="register-container container-background">
+            <div className="register-card">
 
-
-    return <>
-        <div className='register-container container-background'>
-            <div className='register-card'>
-
-                <div className='register-card-progress'>
-                    <div className={`pg ${step === 0 ? 'active' : ''} ${step > 0 ? 'done' : ''}`}></div>
-                    <div className={`pg ${step === 1 ? 'active' : ''} ${step > 1 ? 'done' : ''}`}></div>
-                    <div className={`pg ${step === 2 ? 'active' : ''} ${step > 2 ? 'done' : ''}`}></div>
-                    <div className={`pg ${step === 3 ? 'active' : ''} ${step > 3 ? 'done' : ''}`}></div>
+                <div className="register-card-progress">
+                    {Array.from({ length: TOTAL_STEPS }, (_, i) => (
+                        <div
+                            key={i}
+                            className={`pg ${step === i ? 'active' : ''} ${step > i ? 'done' : ''}`}
+                        />
+                    ))}
                 </div>
 
                 {step === 0 && (
-                    <div className={`register-step ${animation}`}>
-
-                        <h2>Novo Cadastro</h2>
-                        <p>Comece pelo seu endereço de e-mail</p>
-
-                        <div className={`form-group ${emailError ? 'error' : ''} ${email && !emailError ? 'success' : ''}`}>
-                            <label htmlFor="email">E-mail</label>
-
-                            <input
-                                type="email"
-                                id='email'
-                                placeholder='meuEmail@gmail.com'
-                                value={email}
-                                onChange={handleEmailChange}
-                            />
-
-                            <span className='form-group_error'>{emailError}</span>
-                        </div>
-
-                        <button
-                            className='register-card-btn'
-                            onClick={handleContinue}
-                        >
-                            Continuar
-                        </button>
-
-                        <div className='register-card-divider'>ou</div>
-
-                        <button className='btn-google' id='btnGoogle'>
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
-                                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
-                                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"></path>
-                                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
-                            </svg>
-                            Continuar com Google
-                        </button>
-
-                        <div className='register-card-footer'>
-                            Já tem conta?
-                            <button className='link-btn' onClick={() => navigate("/auth/login")}>Entrar</button>
-                        </div>
-
-                    </div>
+                    <StepEmail
+                        animation={animation}
+                        onContinue={handleEmailContinue}
+                    />
                 )}
 
-
                 {step === 1 && (
-                    <div className={`register-step ${animation}`}>
+                    <StepVerifyCode
+                        animation={animation}
+                        email={email}
+                        onVerify={handleVerifyCode}
+                        onBack={prevStep}
+                    />
+                )}
 
-                        <h2>Confirme seu e-mail</h2>
-                        <div className='register-card-sub'>
-                            <p>Enviamos um e-mail para
-                                <br />
-                                <b className='email-highlight'>{email}</b></p>
-                        </div>
-
-                        <div className='register-card-code-row'>
-                            {code.map((digit, index) => (
-                                <input
-                                    key={index}
-                                    type="text"
-                                    maxLength={1}
-                                    value={digit}
-
-                                    ref={(el) => inputsRef.current[index] = el}
-
-                                    onChange={(e) =>
-                                        handleCodeChange(
-                                            e.target.value,
-                                            index
-                                        )
-                                    }
-
-                                    onKeyDown={(e) =>
-                                        handleKeyDown(e, index)
-                                    }
-
-                                    onPaste={handlePaste}
-                                />
-                            ))}
-                        </div>
-
-                        <div className='register-card-resend'>
-                            Não recebeu? <button className='link-btn'>Reenviar Código</button>
-                        </div>
-
-                        <button className='register-card-btn' onClick={handleVerifyCode}>Verificar </button>
-
-                        <button className='link-btn register-card-not-email' onClick={prevStep}>Não é este email</button>
-
-                    </div>
+                {step === 2 && (
+                    <StepFinalizeAccount
+                        animation={animation}
+                        onContinue={nextStep} 
+                    />
                 )}
 
             </div>
         </div>
-    </>
-}
+    );
+};
 
-export default RegisterPage
+export default RegisterPage;

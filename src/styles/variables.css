@@ -21,7 +21,7 @@
 
   
     --progress-bg: rgba(255, 255, 255, 0.08);
-    --progress-active: #9E94F5;
+    --progress-active: #b6aefa;
     --progress-done: var(--accent);
 
     --font-display: 'Syne', sans-serif;

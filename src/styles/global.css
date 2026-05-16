@@ -50,11 +50,11 @@
 }
 
 .pg.done {
-    background: var(--progress-active);
+    background: var(--progress-done);
 }
 
 .pg.active {
-    background: var(--progress-done);
+    background: var(--progress-active);
 }
 
 .register-card p {
@@ -148,6 +148,10 @@
     caret-color: var(--accent);
 }
 
+.register-card-code-row input:focus {
+    border-color: var(--accent);
+}
+
 .register-card-resend {
     font-size: 12px;
     color: #333;
@@ -159,3 +163,64 @@
 .register-card-not-email {
     margin-top: 20px;
 }
+
+
+.register-finalize-icon svg {
+    width: 90px;
+    height: 90px;
+    color: var(--text-primary);
+}
+
+.register-finalize-password-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.password-strength {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.password-strength-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+}
+
+.password-strength-steps .step {
+    height: 4px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.08);
+    transition: .25s;
+}
+
+/* LEVEL 1 */
+
+.password-strength.level-1 .step:nth-child(1) {
+    background: #ff5f7a;
+}
+
+/* LEVEL 2 */
+
+.password-strength.level-2 .step:nth-child(1),
+.password-strength.level-2 .step:nth-child(2) {
+    background: #ffb84d;
+}
+
+/* LEVEL 3 */
+
+.password-strength.level-3 .step:nth-child(1),
+.password-strength.level-3 .step:nth-child(2),
+.password-strength.level-3 .step:nth-child(3) {
+    background: #7dffb3;
+}
+
+/* LEVEL 4 */
+
+.password-strength.level-4 .step {
+    background: #5bdb95;
+}
+
