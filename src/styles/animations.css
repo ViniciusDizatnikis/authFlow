@@ -16,77 +16,58 @@
 
 
 
-/* FADE IN LEFT */
 @keyframes fadeInLeft {
 
     from {
         opacity: 0;
-
-        transform:
-            translateX(-30px);
+        transform: translateX(-24px);
     }
 
     to {
         opacity: 1;
-
-        transform:
-            translateX(0);
+        transform: translateX(0);
     }
+
 }
 
-
-/* FADE OUT LEFT */
 @keyframes fadeOutLeft {
 
     from {
         opacity: 1;
-
-        transform:
-            translateX(0);
+        transform: translateX(0);
     }
 
     to {
         opacity: 0;
-
-        transform:
-            translateX(-30px);
+        transform: translateX(-24px);
     }
+
 }
 
-
-/* FADE IN RIGHT */
 @keyframes fadeInRight {
 
     from {
         opacity: 0;
-
-        transform:
-            translateX(30px);
+        transform: translateX(24px);
     }
 
     to {
         opacity: 1;
-
-        transform:
-            translateX(0);
+        transform: translateX(0);
     }
+
 }
 
-
-/* FADE OUT RIGHT */
 @keyframes fadeOutRight {
 
     from {
         opacity: 1;
-
-        transform:
-            translateX(0);
+        transform: translateX(0);
     }
 
     to {
         opacity: 0;
-
-        transform:
-            translateX(30px);
+        transform: translateX(24px);
     }
+
 }

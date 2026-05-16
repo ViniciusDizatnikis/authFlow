@@ -1,22 +1,15 @@
+import { useState } from 'react';
 import { useOtpCode } from '../../hooks/useOtpCode';
+import { LoadingButton } from '../ui/LoadingButton/LoadingButton';
 
 export function StepVerifyCode({ animation, email, onVerify, onBack }) {
-    const {
-        code,
-        inputsRef,
-        codeLength,
-        isComplete,
-        getCodeValue,
-        handleCodeChange,
-        handleKeyDown,
-        handlePaste,
-    } = useOtpCode();
+    const { code, inputsRef, isComplete, getCodeValue, handleCodeChange, handleKeyDown, handlePaste } = useOtpCode();
+    const [isLoading, setIsLoading] = useState(false);
 
     function handleVerify() {
-        if (!isComplete) {
-            return;
-        }
-        onVerify(getCodeValue());
+        if (!isComplete) return;
+
+        onVerify(getCodeValue(), setIsLoading);
     }
 
     return (
@@ -25,7 +18,7 @@ export function StepVerifyCode({ animation, email, onVerify, onBack }) {
 
             <div className="register-card-sub">
                 <p>
-                    Enviamos um e-mail para
+                    Enviamos um código para
                     <br />
                     <b className="email-highlight">{email}</b>
                 </p>
@@ -48,15 +41,15 @@ export function StepVerifyCode({ animation, email, onVerify, onBack }) {
 
             <div className="register-card-resend">
                 Não recebeu?{' '}
-                <button className="link-btn">Reenviar Código</button>
+                <button className="link-btn">Reenviar código</button>
             </div>
 
-            <button className="register-card-btn" onClick={handleVerify}>
+            <LoadingButton isLoading={isLoading} onClick={handleVerify}>
                 Verificar
-            </button>
+            </LoadingButton>
 
             <button className="link-btn register-card-not-email" onClick={onBack}>
-                Não é este email
+                Não é este e-mail
             </button>
         </div>
     );

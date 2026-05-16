@@ -1,0 +1,80 @@
+/* =========================================================
+   LOADING BUTTON
+========================================================= */
+.loading-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 12px;
+    background: var(--accent);
+    border: none;
+    border-radius: var(--radius);
+    color: var(--text-primary);
+    font-size: 13px;
+    font-family: var(--font-body);
+    font-weight: 500;
+    cursor: pointer;
+    overflow: hidden;
+    transition: background 0.2s, transform 0.1s, opacity 0.2s;
+    margin-top: 4px;
+}
+
+.loading-btn:hover:not(:disabled) {
+    background: var(--accent-hover);
+}
+
+.loading-btn:active:not(:disabled) {
+    transform: scale(0.99);
+}
+
+.loading-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
+/* --- Texto --- */
+.loading-btn__text {
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* --- Spinner (oculto por padrão) --- */
+.loading-btn__spinner {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(0.6);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    pointer-events: none;
+}
+
+.loading-btn__spinner::after {
+    content: '';
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: btn-spin 0.6s linear infinite;
+}
+
+/* --- Estado loading --- */
+.loading-btn--loading .loading-btn__text {
+    opacity: 0;
+    transform: scale(0.8);
+}
+
+.loading-btn--loading .loading-btn__spinner {
+    opacity: 1;
+    transform: scale(1);
+}
+
+@keyframes btn-spin {
+    to { transform: rotate(360deg); }
+}

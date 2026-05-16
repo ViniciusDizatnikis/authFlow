@@ -1,0 +1,260 @@
+/* =========================================================
+   REGISTER — Layout
+========================================================= */
+.register-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.register-card {
+    width: 420px;
+    background: var(--surface);
+    border: 0.5px solid var(--surface-2);
+    border-radius: var(--radius-lg);
+    padding: 40px 36px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    z-index: 1;
+}
+
+/* =========================================================
+   REGISTER — Progress bar
+========================================================= */
+.register-card-progress {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 32px;
+}
+
+.pg {
+    flex: 1;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--progress-bg);
+    transition: background 0.4s;
+}
+
+.pg.done {
+    background: var(--progress-done);
+}
+
+.pg.active {
+    background: var(--progress-active);
+}
+
+/* =========================================================
+   REGISTER — Tipografia interna
+========================================================= */
+.register-card h2 {
+    font-family: var(--font-display);
+}
+
+.register-card p {
+    color: var(--text-muted);
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.register-card .form-group {
+    margin-bottom: 20px;
+}
+
+/* =========================================================
+   REGISTER — Footer e sub
+========================================================= */
+.register-card-footer {
+    text-align: center;
+    margin-top: 1.75rem;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    color: var(--text-muted);
+}
+
+.register-card-sub {
+    margin-bottom: 12px;
+}
+
+/* =========================================================
+   REGISTER — OTP (código de verificação)
+========================================================= */
+.register-card-code-row {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin: 4px 0 6px;
+}
+
+.register-card-code-row input {
+    width: 48px;
+    height: 54px;
+    background: var(--surface-2);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 25px;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-align: center;
+    font-family: var(--font-display);
+    outline: none;
+    transition: border-color 0.2s;
+    caret-color: var(--accent);
+}
+
+.register-card-code-row input:focus {
+    border-color: var(--accent);
+}
+
+.register-card-resend {
+    font-size: 12px;
+    color: var(--text-muted);
+    text-align: center;
+    margin: 20px 0;
+}
+
+.register-card-not-email {
+    margin-top: 20px;
+}
+
+/* =========================================================
+   REGISTER — Finalizar (ícone e senha)
+========================================================= */
+.register-finalize-icon svg {
+    width: 90px;
+    height: 90px;
+    color: var(--text-primary);
+}
+
+.register-finalize-password-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+/* =========================================================
+   REGISTER — Password strength
+========================================================= */
+.password-strength {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.password-strength-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+}
+
+.password-strength-steps .step {
+    height: 4px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    transition: background 0.25s;
+}
+
+.password-strength.level-1 .step:nth-child(1) {
+    background: #ff5f7a;
+}
+
+.password-strength.level-2 .step:nth-child(-n+2) {
+    background: #ffb84d;
+}
+
+.password-strength.level-3 .step:nth-child(-n+3) {
+    background: #7dffb3;
+}
+
+.password-strength.level-4 .step {
+    background: #5bdb95;
+}
+
+
+
+/* =========================================================
+   REGISTER — Completed Icon
+========================================================= */
+.completed-icon {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;;
+    padding: 5px;
+
+    justify-self: center;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle at top,
+            #67f08f,
+            #38c76a 70%);
+
+    box-shadow:
+        0 0 0 6px rgba(79, 255, 139, 0.08),
+        0 10px 30px rgba(56, 199, 106, 0.35),
+        inset 0 2px 8px rgba(255, 255, 255, 0.25);
+}
+
+.completed-icon svg {
+    width: 34px;
+    height: 34px;
+
+    color: white;
+
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+}
+
+/* =========================================================
+   REGISTER — Account summary box
+========================================================= */
+.acc-box {
+    display: flex;
+    flex-direction: column;
+    background: var(--bg);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    margin: 16px 0;
+    gap: 5px;
+}
+
+.acc-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 0;
+}
+
+.acc-icon {
+    width: 35px;
+    height: 35px;
+    border-radius: 6px;
+    background: var(--surface-2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    flex-shrink: 0;
+}
+
+.acc-info {
+    font-size: 12px;
+    color: var(--text-muted);
+    text-align: start;
+}
+
+.acc-val {
+    font-size: 13px;
+    color: var(--text-primary);
+    margin-top: 1px;
+    text-align: start;
+}

@@ -1,31 +1,37 @@
 :root {
-
-    --bg: #0a0a0b;
-
-    --surface: #111114;
+    /* Superfícies */
+    --bg:        #0a0a0b;
+    --surface:   #111114;
     --surface-2: #18181c;
 
-    --border: rgba(255, 255, 255, 0.07);
+    /* Bordas */
+    --border:       rgba(255, 255, 255, 0.07);
     --border-hover: rgba(255, 255, 255, 0.14);
 
-    --text-primary: #f0f0f2;
+    /* Textos */
+    --text-primary:   #f0f0f2;
     --text-secondary: #8a8a96;
-    --text-muted: #4a4a56;
+    --text-muted:     #4a4a56;
 
-    --accent: #7c6fff;
-    --accent-dim: rgba(124, 111, 255, 0.12);
+    /* Accent */
+    --accent:       #7c6fff;
+    --accent-dim:   rgba(124, 111, 255, 0.12);
     --accent-hover: #9d8fff;
 
-    --danger: #ff6b6b;
+    /* Feedback */
+    --danger:  #ff6b6b;
     --success: #4fd17a;
 
-  
-    --progress-bg: rgba(255, 255, 255, 0.08);
+    /* Progress */
+    --progress-bg:     rgba(255, 255, 255, 0.08);
     --progress-active: #b6aefa;
-    --progress-done: var(--accent);
+    --progress-done:   var(--accent);
 
+    /* Tipografia */
     --font-display: 'Syne', sans-serif;
-    --font-body: 'DM Sans', sans-serif;
+    --font-body:    'DM Sans', sans-serif;
 
-    --border-radius-md: 8px;
+    /* Misc */
+    --radius:    8px;
+    --radius-lg: 16px;
 }

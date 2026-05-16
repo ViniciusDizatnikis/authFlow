@@ -1,4 +1,6 @@
-/* RESET */
+/* =========================================================
+   RESET
+========================================================= */
 *,
 *::before,
 *::after {
@@ -7,61 +9,33 @@
     padding: 0;
 }
 
-/* Base */
-#root {
-    height: 100dvh;
-}
-
-
-/* Animações */
-.fade-in-left {
-    animation:
-        fadeInLeft 0.4s ease forwards;
-}
-
-.fade-out-left {
-    animation:
-        fadeOutLeft 0.4s ease forwards;
-}
-
-.fade-in-right {
-    animation:
-        fadeInRight 0.4s ease forwards;
-}
-
-.fade-out-right {
-    animation:
-        fadeOutRight 0.4s ease forwards;
-}
-
-
-
-
-/* GLOBAL */
+/* =========================================================
+   BASE
+========================================================= */
 html,
 body {
     width: 100%;
     min-height: 100%;
-
     background: var(--bg);
     color: var(--text-primary);
-
     font-family: var(--font-body);
     font-size: 15px;
     line-height: 1.6;
-
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
 }
 
+#root {
+    height: 100dvh;
+}
 
-/* fundo quadriculado */
+/* =========================================================
+   FUNDO QUADRICULADO
+========================================================= */
 .container-background::before {
     content: "";
-
     position: absolute;
     inset: 0;
-
     background:
         repeating-linear-gradient(0deg,
             transparent 0px,
@@ -73,12 +47,12 @@ body {
             transparent 40px,
             rgba(255, 255, 255, 0.015) 40px,
             rgba(255, 255, 255, 0.015) 41px);
-
     pointer-events: none;
 }
 
-
-/* Textos Links */
+/* =========================================================
+   TIPOGRAFIA UTILITÁRIA
+========================================================= */
 .link-btn {
     background: none;
     border: none;
@@ -94,13 +68,17 @@ body {
     color: var(--accent-hover);
 }
 
-
-/* Email Destaque */
 .email-highlight {
     color: var(--accent);
 }
 
-/* input Form */
+/* =========================================================
+   FORM GROUP
+========================================================= */
+.form-group {
+    text-align: left;
+}
+
 .form-group label {
     display: block;
     font-size: 12px;
@@ -125,10 +103,10 @@ body {
     -webkit-appearance: none;
 }
 
+.form-group input:focus {
+    border-color: var(--border-hover);
+}
 
-
-
-/* Erro Form */
 .form-group_error {
     font-size: 12px;
     color: var(--danger);
@@ -136,10 +114,21 @@ body {
     display: none;
 }
 
+.form-group.error input {
+    border-color: var(--danger);
+}
 
+.form-group.error .form-group_error {
+    display: block;
+}
 
+.form-group.success input {
+    border-color: var(--success);
+}
 
-/* Checkbox Form */
+/* =========================================================
+   CHECKBOX
+========================================================= */
 .form-group_checkbox {
     display: flex;
     align-items: center;
@@ -159,10 +148,7 @@ body {
     background: var(--surface);
     cursor: pointer;
     position: relative;
-    transition:
-        background 0.2s ease,
-        border-color 0.2s ease,
-        transform 0.15s ease;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
 }
 
 .form-group_checkbox input:hover {
@@ -190,40 +176,24 @@ body {
     transform: rotate(45deg);
 }
 
-/* Erro no form */
-.form-group.error input {
-    border-color: var(--danger);
-}
-
-.form-group.error .form-group_error {
-    display: block;
-}
-
-.form-group.success input {
-    border-color: var(--success);
-}
-
-
-
-
-
-/* botão google */
-
+/* =========================================================
+   BOTÃO GOOGLE
+========================================================= */
 .btn-google {
     width: 100%;
     padding: 11px;
     background: transparent;
     border: 0.5px solid #252528;
-    border-radius: 8px;
+    border-radius: var(--radius);
     color: #555;
     font-size: 13px;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    transition: border-color 0.2s, background 0.2s;
+    transition: border-color 0.2s, background 0.2s, color 0.2s;
     margin-top: 10px;
 }
 
@@ -237,4 +207,47 @@ body {
     border-color: var(--border-hover);
     background: var(--surface-2);
     color: var(--text-primary);
+}
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 1.5rem 0;
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: var(--border);
+}
+
+
+
+
+/* =========================================================
+   Animações
+========================================================= */
+
+.fade-in-left {
+    animation: fadeInLeft .45s cubic-bezier(.22, 1, .36, 1) forwards;
+}
+
+.fade-out-left {
+    animation: fadeOutLeft .35s cubic-bezier(.4, 0, 1, 1) forwards;
+}
+
+.fade-in-right {
+    animation: fadeInRight .45s cubic-bezier(.22, 1, .36, 1) forwards;
+}
+
+.fade-out-right {
+    animation: fadeOutRight .35s cubic-bezier(.4, 0, 1, 1) forwards;
 }
